@@ -69,7 +69,7 @@ public class TextProcessing {
 				objSitu.SituationCount++;
 				objSitu.SituationType.put(textLast, objSitu.SituationType.get(textLast)+1);
 			}
-			
+
 		}
 		/*System.out.println(lastResult.AttributeName);
 		for ( String Situstr:lastResult.SituationMap.keySet() ) {
