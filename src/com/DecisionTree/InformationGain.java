@@ -6,15 +6,26 @@ import java.util.HashMap;
 
 public class InformationGain {
 	
-	public Double Entropy_S = null;
+	//墒值
+	//Entropy_S = -(p+)*log(p+)-(p-)*log(p-)
+	//p+、p-分别为正例和负例占总记录的比例，输出属性值大于2的情况，公示是对称的
+	public Double Entropy_S = null; 
+	
 	public InformationGain() {
 		
 	}
 	
+	//踢狗构造方法，在实例化时直接计算得到Entropy_S
 	public InformationGain(ArrayList<Integer> CalcuParam) {
 		this.Entropy_S = this.getInformationEntropy(CalcuParam);
 	}
 	
+	//计算墒值
+	//参数CalcuParam表示每条属性所包含的记录个数
+	//程序通过第一次循环计算得到总记录个数
+	//通过第二次循环依次获得每条属性的记录个数在总记录个数中的比例
+	//然后依据公式：-(p)*log(p)计算
+	//将每次循环的计算结果累加到TotalEntropy上即得到结果
 	public double getInformationEntropy( ArrayList<Integer> CalcuParam ) {
 		
 		int 	TotalCount = 0;
@@ -31,6 +42,7 @@ public class InformationGain {
 		return TotalEntropy;
 	}
 	
+	//
 	public double getInformationGain( HashMap<Integer,Double> CalcuParam ) {
 		
 		if ( this.Entropy_S == null ) {
