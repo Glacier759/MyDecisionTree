@@ -2,7 +2,6 @@
 package com.DecisionTree;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class InformationGain {
 	
@@ -44,7 +43,11 @@ public class InformationGain {
 	
 	//信息增益计算
 	//Entropy_S为计算信息增益的必须条件，所以首先判断其是否为空，为空则无法进行后续计算
-	//参数CalcuParam中Double表示
+	//参数CalcuParam的组织格式为"所计算的信息增益的属性的某个情况拥有的记录个数 这种情况计算得到的墒值"
+	//中间以空格分隔，第一重循环统计总记录个数
+	//第二重循环首先计算当前情况的记录个数在总记录个数中的比重
+	//然后用其比重乘以这种情况墒值，累计求和到TotalGain
+	//最后用Entropy_S减去TotalGain即得到当前属性的信息增益
 	public double getInformationGain( ArrayList<String> CalcuParam ) {
 		
 		if ( this.Entropy_S == null ) {

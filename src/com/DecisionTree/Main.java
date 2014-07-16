@@ -2,54 +2,60 @@
 package com.DecisionTree;
 
 import java.io.File;
-import java.io.IOException;
+import java.security.KeyStore.Entry.Attribute;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-
-public class Main {
-	
-	
+public class Main {	
 	
 	public static void main(String[] args) throws Exception {
-		List<String> TrainingInfo = new ArrayList<String>();
+	
+		TextProcessing TextPro = new TextProcessing();
+		TextPro.readFile(new File("test.csv"));
 		
-		TrainingInfo = FileUtils.readLines(new File("test.csv"));
-		String TrainingHeader = TrainingInfo.remove(0);
-		String Headers[] = TrainingHeader.split(",");
+		ArrayList<Integer> ExtropyS_Param = new ArrayList<Integer>();
 		
-		InformationGain infoGain = new InformationGain();
-		//ArrayList<Integer> Test = new ArrayList<Integer>();
-		//Test.add(3);
-		//Test.add(4);
-		//System.out.println(infoGain.getInformationEntropy(Test));
+		
+		/*TextPro.readFile(new File("test.csv"));
+		TextPro.initResultSet();
+			
+		ArrayList<Integer> ExtropyS_Param = new ArrayList<Integer>();
+		HashMap<String, Integer> lastResultSet = TextPro.ResultSet.get(TextPro.ResultName).AttributeSet;
+		HashMap<String, AttributeClass> thisResultSet = TextPro.ResultSet;
+		for ( String Situation:lastResultSet.keySet() ) {
+			ExtropyS_Param.add(lastResultSet.get(Situation));
+		}
+		
+		InformationGain infoGain = new InformationGain(ExtropyS_Param);
+		ArrayList<String> GainCount = new ArrayList<String>();
+		thisResultSet.remove(TextPro.ResultName);
+		
+		for ( String Header:thisResultSet.keySet() ) {
+			HashMap<String, Integer> headerResultSet = thisResultSet.get(Header).AttributeSet;
+			Integer TotalCount = 0;
+			for ( String Situation:headerResultSet.keySet() ) {
+				ArrayList<Integer> obj = new ArrayList<Integer>();
+				Integer SingleCount = headerResultSet.get(Situation);
+				obj.add(SingleCount);
+				TotalCount += SingleCount;
+			}
+			GainCount.add(TotalCount+" "+obj);
+		}
 		
 		ArrayList<Integer> Wind = new ArrayList<Integer>();
 		ArrayList<Integer> Weak = new ArrayList<Integer>();
 		ArrayList<Integer> Strong = new ArrayList<Integer>();
-		Wind.add(9);
-		Wind.add(5);
-		Weak.add(6);
-		Weak.add(2);
-		Strong.add(3);
-		Strong.add(3);
+		Wind.add(9);	Wind.add(5);
+		Weak.add(6); 	Weak.add(2);
+		Strong.add(3); 	Strong.add(3);
 		
-		ArrayList<String> GainTest = new ArrayList<String>();
+		
 		GainTest.add(6+" "+infoGain.getInformationEntropy(Strong));
 		GainTest.add(8+" "+infoGain.getInformationEntropy(Weak));
 		
 		double Entropy_S = infoGain.getInformationEntropy(Wind);
 		infoGain.Entropy_S = Entropy_S;
-		System.out.println(infoGain.getInformationGain(GainTest));
-		/*System.out.println(TrainingInfo.size());
-		for ( String Training:TrainingInfo ) {
-			System.out.println(Training);
-		}
-		for ( String Head:Headers ) {
-			System.out.println(Head);
-		}*/
+		System.out.println(infoGain.getInformationGain(GainTest));*/
 	}
 
 }
