@@ -36,9 +36,9 @@ public class Main {
 		Strong.add(3);
 		Strong.add(3);
 		
-		HashMap<Integer, Double> GainTest = new HashMap<Integer, Double>();
-		GainTest.put(8, infoGain.getInformationEntropy(Weak));
-		GainTest.put(6, infoGain.getInformationEntropy(Strong));
+		ArrayList<String> GainTest = new ArrayList<String>();
+		GainTest.add(6+" "+infoGain.getInformationEntropy(Strong));
+		GainTest.add(8+" "+infoGain.getInformationEntropy(Weak));
 		
 		double Entropy_S = infoGain.getInformationEntropy(Wind);
 		infoGain.Entropy_S = Entropy_S;

@@ -42,8 +42,10 @@ public class InformationGain {
 		return TotalEntropy;
 	}
 	
-	//
-	public double getInformationGain( HashMap<Integer,Double> CalcuParam ) {
+	//信息增益计算
+	//Entropy_S为计算信息增益的必须条件，所以首先判断其是否为空，为空则无法进行后续计算
+	//参数CalcuParam中Double表示
+	public double getInformationGain( ArrayList<String> CalcuParam ) {
 		
 		if ( this.Entropy_S == null ) {
 			System.out.println("Entropy_S is null");
@@ -52,12 +54,14 @@ public class InformationGain {
 		
 		int 	TotalCount = 0;
 		double 	TotalGain = 0;
-		for ( int SingleCount:CalcuParam.keySet() ) {
-			TotalCount += SingleCount;
+		for ( String SingleString:CalcuParam ) {
+			TotalCount += new Integer(SingleString.split(" ")[0]);
 		}
-		for ( Integer SingleCount:CalcuParam.keySet() ) {
+		for ( String SingleString:CalcuParam ) {
+			String SingleParam[] = SingleString.split(" ");
+			Integer SingleCount = new Integer(SingleParam[0]);
 			double Proportion = (double)SingleCount/(double)TotalCount;
-			double SingleGain = -(Proportion)*CalcuParam.get(SingleCount);
+			double SingleGain = -(Proportion)*(new Double(SingleParam[1]));
 			TotalGain += SingleGain;
 		}
 		TotalGain = this.Entropy_S + TotalGain;
