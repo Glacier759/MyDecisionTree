@@ -50,15 +50,20 @@ public class Main {
 			System.out.println(AttrName+"\t\t"+AttrGainMap.get(AttrName));
 		}
 		
+		HashMap<String, Double> AttrSplitMap = new HashMap<String, Double>();
 		for ( AttributeClass objAttr:TextPro.ResultList  ) { 				//遍历其余所有属性
 			ArrayList<Integer> SplitList = new ArrayList<Integer>();
 			for ( String SituName:objAttr.SituationMap.keySet() ) {
 				SituationClass objSitu = objAttr.SituationMap.get(SituName);
 				SplitList.add(objSitu.SituationCount);
 			}
-			infoGain.getInformationSplit(SplitList);
+			AttrSplitMap.put(objAttr.AttributeName, infoGain.getInformationSplit(SplitList));
 		}
 		
+		HashMap<String, Double> AttrGainRatioMap = new HashMap<String, Double>();
+		for ( String SituName:AttrGainMap.keySet() ) {
+			infoGain.getInformationGainRation(AttrGainMap.get(SituName), AttrSplitMap.get(SituName));
+		}
 		
 		/*TextPro.readFile(new File("test.csv"));
 		TextPro.initResultSet();

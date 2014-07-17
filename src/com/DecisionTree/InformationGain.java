@@ -71,6 +71,11 @@ public class InformationGain {
 		return TotalGain;
 	}
 	
+	//计算分类信息
+	//参数为属性中各记录的出现个数
+	//分别计算得到该记录个数作占的比例
+	//通过公式-(p)*log(p)
+	//累加获得分类信息
 	public double getInformationSplit( ArrayList<Integer> CalcuParam )  {
 		
 		int TotalCount = 0;
@@ -83,9 +88,16 @@ public class InformationGain {
 			double Logarithmic = Math.log(Proportion)/Math.log(2);
 			double SingleSplit = -(Proportion)*(Logarithmic);
 			TotalSplit += SingleSplit;
-			System.out.println("-"+Proportion+" * "+Logarithmic);
 		}
-		System.out.println("TotalSplit = " + TotalSplit);
 		return TotalSplit;
+	}
+	
+	//计算信息增益率
+	//参数AttrGain为该属性的信息增益，AttrSplit为该属性的分类信息
+	//公式GainRatio=Gain/Split
+	public double getInformationGainRation( Double AttrGain, Double AttrSplit ) {
+		
+		double GainRatio  = AttrGain/AttrSplit;
+		return GainRatio;
 	}
 }
