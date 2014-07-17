@@ -1,0 +1,11 @@
+日志密度,好友密度,是否使用真实头像,账号是否真实
+s,s,no,no
+s,l,yes,yes
+l,m,yes,yes
+m,m,yes,yes
+l,m,yes,yes
+m,l,no,yes
+m,s,no,no
+l,m,no,yes
+m,s,no,yes
+s,s,yes,no

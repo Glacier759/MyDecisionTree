@@ -2,7 +2,6 @@
 package com.DecisionTree;
 
 import java.io.File;
-import java.security.KeyStore.Entry.Attribute;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -67,7 +66,12 @@ public class Main {
 		for ( String AttrName:AttrGainRatioMap.keySet() ) {
 			System.out.println(AttrName+"\t"+AttrGainRatioMap.get(AttrName));
 		}
-		
+		//至此已经做好建立一颗决策树的准备工作
+		//AttrGainMap<String, Double>保存各属性的信息增益
+		//AttrGainRatioMap<String, Double>保存各属性的信息增益率
+		//接下来我们依据信息增益率来进行建树
+		BuildTree objTree = new BuildTree(AttrGainRatioMap, TextPro.ResultList);
+		objTree.getDecisionTree();
 	}
 
 }
