@@ -25,9 +25,10 @@ public class Main {
 		InformationGain infoGain = new InformationGain(EntropyS_Param); 	//实例化计算墒与信息增益的类 传参表示初始化同时进行EntropyS的计算
 		System.out.println(infoGain.getInformationEntropy(EntropyS_Param)); 	//打印计算得到的EntropyS
 		
+		HashMap<String, Double> AttrGainMap = new HashMap<String, Double>();
 		for ( AttributeClass objAttr:TextPro.ResultList  ) { 				//遍历其余所有属性
 			ArrayList<Double> AttributeEntropy = new ArrayList<Double>(); 	//以每个属性为根节点，计算其信息增益，初始化所需的各记录的各种类的墒值
-			ArrayList<Integer> AttributeCount = new ArrayList<Integer>(); 	//保存各属性的所有记录的个数
+			ArrayList<Integer> AttributeCount = new ArrayList<Integer>(); 	//保存各属性的所有记录的个数s
 			for ( String SituationName:objAttr.SituationMap.keySet() ) { 			//遍历当前属性的所有记录
 				ArrayList<Integer> EntropyA_Param = new ArrayList<Integer>(); 		//初始化计算该记录墒值的参数列表
 				SituationClass objSitu = objAttr.SituationMap.get(SituationName); 		//获得保存有当前记录的对象
@@ -42,8 +43,23 @@ public class Main {
 			for ( int i = 0; i < AttributeEntropy.size(); i ++ ) { 		
 				GainCount.add(AttributeCount.get(i)+" "+AttributeEntropy.get(i)); 	//将计算当前属性信息增益所需的参数加入参数列表
 			}
-			System.out.println(objAttr.AttributeName+"\t"+infoGain.getInformationGain(GainCount)); 		//计算当前属性信息增益并打印
+			AttrGainMap.put(objAttr.AttributeName, infoGain.getInformationGain(GainCount)); 	//计算当前属性信息增益并保存在集合中
 		}
+		//至此得到所有属性的信息增益
+		for ( String AttrName:AttrGainMap.keySet() ) {
+			System.out.println(AttrName+"\t\t"+AttrGainMap.get(AttrName));
+		}
+		
+		for ( AttributeClass objAttr:TextPro.ResultList  ) { 				//遍历其余所有属性
+			ArrayList<Integer> SplitList = new ArrayList<Integer>();
+			for ( String SituName:objAttr.SituationMap.keySet() ) {
+				SituationClass objSitu = objAttr.SituationMap.get(SituName);
+				SplitList.add(objSitu.SituationCount);
+			}
+			infoGain.getInformationSplit(SplitList);
+		}
+		
+		
 		/*TextPro.readFile(new File("test.csv"));
 		TextPro.initResultSet();
 			

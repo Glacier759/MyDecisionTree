@@ -70,4 +70,22 @@ public class InformationGain {
 		TotalGain = this.Entropy_S + TotalGain;
 		return TotalGain;
 	}
+	
+	public double getInformationSplit( ArrayList<Integer> CalcuParam )  {
+		
+		int TotalCount = 0;
+		double TotalSplit = 0;
+		for ( Integer SingleCount:CalcuParam ) {
+			TotalCount += SingleCount;
+		}
+		for ( Integer SingleCount:CalcuParam ) {
+			double Proportion = (double)SingleCount/(double)TotalCount;
+			double Logarithmic = Math.log(Proportion)/Math.log(2);
+			double SingleSplit = -(Proportion)*(Logarithmic);
+			TotalSplit += SingleSplit;
+			System.out.println("-"+Proportion+" * "+Logarithmic);
+		}
+		System.out.println("TotalSplit = " + TotalSplit);
+		return TotalSplit;
+	}
 }
