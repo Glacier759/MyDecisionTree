@@ -50,61 +50,24 @@ public class Main {
 			System.out.println(AttrName+"\t\t"+AttrGainMap.get(AttrName));
 		}
 		
-		HashMap<String, Double> AttrSplitMap = new HashMap<String, Double>();
+		HashMap<String, Double> AttrSplitMap = new HashMap<String, Double>(); 		//保存各属性的分类信息
 		for ( AttributeClass objAttr:TextPro.ResultList  ) { 				//遍历其余所有属性
-			ArrayList<Integer> SplitList = new ArrayList<Integer>();
-			for ( String SituName:objAttr.SituationMap.keySet() ) {
+			ArrayList<Integer> SplitList = new ArrayList<Integer>(); 	//初始化计算分类信息所需的参数列表
+			for ( String SituName:objAttr.SituationMap.keySet() ) { 	//遍历当前属性的所有记录
 				SituationClass objSitu = objAttr.SituationMap.get(SituName);
-				SplitList.add(objSitu.SituationCount);
+				SplitList.add(objSitu.SituationCount); 					//加入参数列表
 			}
-			AttrSplitMap.put(objAttr.AttributeName, infoGain.getInformationSplit(SplitList));
+			AttrSplitMap.put(objAttr.AttributeName, infoGain.getInformationSplit(SplitList)); 	//计算分类信息并加入集合中
 		}
 		
-		HashMap<String, Double> AttrGainRatioMap = new HashMap<String, Double>();
-		for ( String SituName:AttrGainMap.keySet() ) {
-			infoGain.getInformationGainRation(AttrGainMap.get(SituName), AttrSplitMap.get(SituName));
+		HashMap<String, Double> AttrGainRatioMap = new HashMap<String, Double>(); 	//初始化保存信息增益率的集合
+		for ( String AttrName:AttrGainMap.keySet() ) { 								//遍历所有属性
+			AttrGainRatioMap.put(AttrName, infoGain.getInformationGainRation(AttrGainMap.get(AttrName), AttrSplitMap.get(AttrName))); 	//计算信息增益率并加入集合
+		}
+		for ( String AttrName:AttrGainRatioMap.keySet() ) {
+			System.out.println(AttrName+"\t"+AttrGainRatioMap.get(AttrName));
 		}
 		
-		/*TextPro.readFile(new File("test.csv"));
-		TextPro.initResultSet();
-			
-		ArrayList<Integer> ExtropyS_Param = new ArrayList<Integer>();
-		HashMap<String, Integer> lastResultSet = TextPro.ResultSet.get(TextPro.ResultName).AttributeSet;
-		HashMap<String, AttributeClass> thisResultSet = TextPro.ResultSet;
-		for ( String Situation:lastResultSet.keySet() ) {
-			ExtropyS_Param.add(lastResultSet.get(Situation));
-		}
-		
-		InformationGain infoGain = new InformationGain(ExtropyS_Param);
-		ArrayList<String> GainCount = new ArrayList<String>();
-		thisResultSet.remove(TextPro.ResultName);
-		
-		for ( String Header:thisResultSet.keySet() ) {
-			HashMap<String, Integer> headerResultSet = thisResultSet.get(Header).AttributeSet;
-			Integer TotalCount = 0;
-			for ( String Situation:headerResultSet.keySet() ) {
-				ArrayList<Integer> obj = new ArrayList<Integer>();
-				Integer SingleCount = headerResultSet.get(Situation);
-				obj.add(SingleCount);
-				TotalCount += SingleCount;
-			}
-			GainCount.add(TotalCount+" "+obj);
-		}
-		
-		ArrayList<Integer> Wind = new ArrayList<Integer>();
-		ArrayList<Integer> Weak = new ArrayList<Integer>();
-		ArrayList<Integer> Strong = new ArrayList<Integer>();
-		Wind.add(9);	Wind.add(5);
-		Weak.add(6); 	Weak.add(2);
-		Strong.add(3); 	Strong.add(3);
-		
-		
-		GainTest.add(6+" "+infoGain.getInformationEntropy(Strong));
-		GainTest.add(8+" "+infoGain.getInformationEntropy(Weak));
-		
-		double Entropy_S = infoGain.getInformationEntropy(Wind);
-		infoGain.Entropy_S = Entropy_S;
-		System.out.println(infoGain.getInformationGain(GainTest));*/
 	}
 
 }
