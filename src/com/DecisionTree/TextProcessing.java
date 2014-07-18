@@ -10,145 +10,105 @@ import org.apache.commons.io.FileUtils;
 
 
 public class TextProcessing {
-	
-	public class AttributeClass {
-		String AttributeName; 							//保存属性名称
-		HashMap<String, SituationClass> SituationMap = new HashMap<String, SituationClass>(); 	//保存记录的名称与记录信息
+	class Result {
+		public String ResultName;
+		public ArrayList<String> ResultList = new ArrayList<String>();
+		public HashMap<String, Integer> Result_Count = new HashMap<String, Integer>();
 	}
-	public class SituationClass {
-		Integer SituationCount; 					//保存记录总数
-		HashMap<String, Integer> SituationType = new HashMap<String, Integer>(); 	//保存记录的结果种类与此类的个数
+	class Attribute {
+		public String AttributeName;
+		public HashMap<String, Situation> SituationMap = new HashMap<String, Situation>();
+		public HashMap<String, Integer> Situation_Count = new HashMap<String, Integer>();
 	}
+	class Situation {
+		public String SituationName;
+		public HashMap<String, Integer> Result_Count = new HashMap<String, Integer>();
+	}
+	public Result objResult = new Result();
+	public ArrayList<Attribute> objAttributeList = new ArrayList<Attribute>();
+	public String Headers[];
 	
-	ArrayList<AttributeClass> ResultList = new ArrayList<AttributeClass>(); 	//记录除了最后一列的所有数据
-	AttributeClass lastResult = new AttributeClass(); 							//记录最后一列的数据
-	public void readFile( File file ) throws Exception {
+	public void readText( File file ) throws Exception {
 		List<String> textList = FileUtils.readLines(file);
-		String Headers[] = textList.remove(0).split(",");
+		textProcess(textList);
+	}
+	public void readText( List<String> textList ) {
+		textProcess(textList);
+	}
+	
+	public void textProcess( List<String> textList ) {
+		Headers = textList.remove(0).split(",");
 		for ( int i = 0; i < Headers.length-1; i ++ ) {
-			AttributeClass objAttr = new AttributeClass();
+			Attribute objAttr = new Attribute();
 			objAttr.AttributeName = Headers[i];
-			ResultList.add(objAttr);
+			objAttributeList.add(objAttr);
 		}
+		objResult.ResultName = Headers[Headers.length-1];
+		
 		for ( String textLine:textList ) {
-			String textArray[] = textLine.split(",");
-			for ( int i = 0; i < textArray.length-1; i ++ ) {
-				HashMap<String, SituationClass> TempList = ResultList.get(i).SituationMap;
-				if ( !TempList.containsKey(textArray[i]) ) {
-					SituationClass objSitu = new SituationClass();
-					objSitu.SituationCount = 1;
-					String textLast = textArray[textArray.length-1];
-					objSitu.SituationType.put(textLast, 1);
-					TempList.put(textArray[i], objSitu);
-				}
-				else {
-					SituationClass objSitu = TempList.get(textArray[i]);
-					objSitu.SituationCount++;
-					String textLast = textArray[textArray.length-1];
-					if ( !objSitu.SituationType.containsKey(textArray[textArray.length-1]) ) {
-						objSitu.SituationType.put(textLast, 1);
+			String[] textArray = textLine.split(",");
+			int lastIndex = textArray.length-1;
+			for ( int i = 0; i < lastIndex; i ++ ) {
+				Attribute objAttr = objAttributeList.get(i);
+				if ( !objAttr.Situation_Count.containsKey(textArray[i]) ) { 	//当textArray[i]这条属性第一次出现时
+					objAttr.Situation_Count.put(textArray[i], 1);
+					Situation objSitu = new Situation();
+					objSitu.SituationName = textArray[i];
+					if ( !objSitu.Result_Count.containsKey(textArray[lastIndex]) ) {
+						objSitu.Result_Count.put(textArray[lastIndex], 1);
 					}
 					else {
-						objSitu.SituationType.put(textLast, objSitu.SituationType.get(textLast)+1);
+						objSitu.Result_Count.put(textArray[lastIndex], objSitu.Result_Count.get(textArray[lastIndex])+1);
+					}
+					objAttr.SituationMap.put(textArray[i], objSitu);
+				}
+				else {
+					objAttr.Situation_Count.put(textArray[i], objAttr.Situation_Count.get(textArray[i])+1);
+					Situation objSitu = objAttr.SituationMap.get(textArray[i]);
+					if ( !objSitu.Result_Count.containsKey(textArray[lastIndex]) ) {
+						objSitu.Result_Count.put(textArray[lastIndex], 1);
+					}
+					else {
+						objSitu.Result_Count.put(textArray[lastIndex], objSitu.Result_Count.get(textArray[lastIndex])+1);
 					}
 				}
 			}
-		}
-		lastResult.AttributeName = Headers[Headers.length-1];
-		for ( String textLine:textList ) {
-			String textLast = textLine.split(",")[Headers.length-1];
-			HashMap<String, SituationClass> TempList = lastResult.SituationMap;
-			if ( !TempList.containsKey(textLast) ) {
-				SituationClass objSitu = new SituationClass();
-				objSitu.SituationCount = 1;
-				objSitu.SituationType.put(textLast, 1);
-				TempList.put(textLast, objSitu);
+			if ( !objResult.Result_Count.containsKey(textArray[lastIndex]) ) {
+				objResult.Result_Count.put(textArray[lastIndex], 1);
+				objResult.ResultList.add(textArray[lastIndex]);
 			}
 			else {
-				SituationClass objSitu = TempList.get(textLast);
-				objSitu.SituationCount++;
-				objSitu.SituationType.put(textLast, objSitu.SituationType.get(textLast)+1);
+				objResult.Result_Count.put(textArray[lastIndex], objResult.Result_Count.get(textArray[lastIndex])+1);
 			}
-
-		}
-		/*System.out.println(lastResult.AttributeName);
-		for ( String Situstr:lastResult.SituationMap.keySet() ) {
-			System.out.println(Situstr);
-			SituationClass obj1 = lastResult.SituationMap.get(Situstr);
-			System.out.println(obj1.SituationCount);
-			for ( String str:obj1.SituationType.keySet() ) {
-				System.out.println(str);
-				System.out.println(obj1.SituationType.get(str));
-			}
-		}*/
-		/*for ( AttributeClass obj:ResultList ) {
-			System.out.println(obj.AttributeName);
-			for ( String Situstr:obj.SituationMap.keySet() ) {
-				System.out.println(Situstr);
-				SituationClass obj1 = obj.SituationMap.get(Situstr);
-				System.out.println(obj1.SituationCount);
-				for ( String str:obj1.SituationType.keySet() ) {
-					System.out.println(str);
-					System.out.println(obj1.SituationType.get(str));
-				}
-			}
-		}*/
-	}
-	/*
-	//定义内部类，保存各属性中的信息
-	//String用于保存当前属性的记录名
-	//Integer用于保存该记录出现的次数
-	public class AttributeClass{
-		public HashMap<String, Integer> AttributeSet = new HashMap<String, Integer>();
-		public AttributeClass() {
 		}
 	}
 	
-	private List<String> fileText;
-	private String Headers[];
-	public String ResultName;
-	public HashMap<String, AttributeClass> ResultSet = new HashMap<String, AttributeClass>();
-	
-	//读入文件
-	public void readFile( File file ) throws Exception {
-		fileText = FileUtils.readLines(file);
-		String Header = fileText.remove(0);
-		Headers = Header.split(",");
-		this.ResultName = Headers[this.getAttributeCount()];
+	public void getChildTable( String AttributeName, String SituationName ) {
+		
 	}
 	
-	//获得属性个数
-	public int getAttributeCount() {
-		return Headers.length-1;
-	}
-	
-	//初始化结果集HashMap<String, AttributeClass> ResultSet
-	//String为属性名
-	//AttributeClass储存属性信息
-	public void initResultSet() {
-		for ( int j = 0; j <= getAttributeCount(); j ++ ) {
-			AttributeClass obj = new AttributeClass();
-			ResultSet.put(Headers[j], obj);
+	public void show() {
+		System.out.println(objResult.ResultName+"\t"+objResult.ResultList.size());
+		for ( String ResultName:objResult.Result_Count.keySet() ) {
+			System.out.println("ResultName = " + ResultName +"\t" + objResult.Result_Count.get(ResultName));
 		}
-		for ( int i = 0; i < fileText.size(); i ++ ) {
-			String lineArray[] = fileText.get(i).split(",");
-			for ( int j = 0; j <= getAttributeCount(); j ++ ) {
-				HashMap<String, Integer> thisAttributeSet = ResultSet.get(Headers[j]).AttributeSet;
-				if ( !thisAttributeSet.containsKey(lineArray[j]) ) {
-					thisAttributeSet.put(lineArray[j], 1);
-				}
-				else {
-					thisAttributeSet.put(lineArray[j], thisAttributeSet.get(lineArray[j])+1);
+		for ( int i = 0; i < objResult.ResultList.size(); i ++ ) {
+			System.out.println(objResult.ResultList.get(i));
+		}
+		
+		for ( Attribute objAttr:objAttributeList ) {
+			System.out.println(objAttr.AttributeName);
+			for ( String AttrName:objAttr.Situation_Count.keySet() ) {
+				System.out.println(AttrName+"\t"+objAttr.Situation_Count.get(AttrName));
+			}
+			for ( String AttrName:objAttr.SituationMap.keySet() ) {
+				Situation objSitu = objAttr.SituationMap.get(AttrName);
+				System.out.println(objSitu.SituationName);
+				for ( String SituName:objSitu.Result_Count.keySet() ) {
+					System.out.println(SituName+"\t"+objSitu.Result_Count.get(SituName));
 				}
 			}
 		}
-		/*System.out.println(ResultSet.size());
-		for ( String Header:ResultSet.keySet() ) {
-			System.out.println("ResultSet = " + Header);
-			AttributeClass obj = ResultSet.get(Header);
-			for ( String ttt:obj.AttributeSet.keySet() ) {
-				System.out.println(ttt+"\t"+obj.AttributeSet.get(ttt));
-			}
-		}
-	}*/
+		
+	}
 }

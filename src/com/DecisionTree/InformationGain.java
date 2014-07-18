@@ -2,9 +2,87 @@
 package com.DecisionTree;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
+import com.DecisionTree.TextProcessing.Attribute;
 
 public class InformationGain {
 	
+	public InformationGain() {
+		
+	}
+	
+	public double getInformationEntroy( HashMap<String, Integer> CalcuParam ) {
+		int TotalCount = 0;
+		double TotalEntroy = 0;
+		
+		for ( String CalcuName:CalcuParam.keySet() ) {
+			int SingleCount = CalcuParam.get(CalcuName);
+			TotalCount += SingleCount;
+		}
+		for ( String CalcuName:CalcuParam.keySet() ) {
+			int SingleCount = CalcuParam.get(CalcuName);
+			double Proportion = (double)SingleCount/(double)TotalCount;
+			double Logarithmic = Math.log(Proportion)/Math.log(2);
+			double SingleEntroy = -(Proportion)*(Logarithmic);
+			TotalEntroy += SingleEntroy;
+		}
+		return TotalEntroy;
+	}
+	
+	public double getInformationGain( double Entropy_S, ArrayList<Integer> CalcuParamInt, ArrayList<Double> CalcuParamDou ) {
+		int TotalCount = 0;
+		double TotalGain = 0;
+		for ( Integer SingleCount:CalcuParamInt ) {
+			TotalCount += SingleCount;
+		}
+		for ( int i = 0; i < CalcuParamInt.size(); i ++ ) {
+			int SingleCount = CalcuParamInt.get(i);
+			double Proportion = (double)SingleCount/(double)TotalCount;
+			double SingleEntropy = (Proportion)*(CalcuParamDou.get(i));
+			TotalGain += SingleEntropy;
+		}
+		
+		TotalGain = Entropy_S - TotalGain;
+		return TotalGain;
+	}
+	
+	public String getMaxGain( TextProcessing TextPro ) {
+		System.out.println(getInformationEntroy(TextPro.objResult.Result_Count));
+		double Entropy_S = getInformationEntroy(TextPro.objResult.Result_Count);
+		HashMap<String, Double> GainMap = new HashMap<String, Double>();
+		for ( int i = 0; i < TextPro.objAttributeList.size(); i ++ ) {
+			Attribute objAttr = TextPro.objAttributeList.get(i);
+			System.out.println(objAttr.AttributeName);
+			ArrayList<Integer> CalcuParamInt = new ArrayList<Integer>();
+			ArrayList<Double> CalcuParamDou = new ArrayList<Double>();
+			for ( String SituName:objAttr.Situation_Count.keySet() ) {
+				CalcuParamInt.add(objAttr.Situation_Count.get(SituName));
+				CalcuParamDou.add(getInformationEntroy(objAttr.SituationMap.get(SituName).Result_Count));
+				System.out.println("\t"+SituName+"\t"+objAttr.Situation_Count.get(SituName));
+				System.out.println("\t\t"+getInformationEntroy(objAttr.SituationMap.get(SituName).Result_Count));
+			}
+			GainMap.put(objAttr.AttributeName, getInformationGain(Entropy_S, CalcuParamInt, CalcuParamDou));
+			System.out.println("\t\tGain = " + getInformationGain(Entropy_S, CalcuParamInt, CalcuParamDou));
+		}
+		Double MaxGain = null;
+		String MaxGainName = null;
+		for ( String SingleGainName:GainMap.keySet()) {
+			if ( MaxGain == null ) {
+				MaxGain = GainMap.get(SingleGainName);
+				MaxGainName = SingleGainName;
+			}
+			else {
+				if ( MaxGain < GainMap.get(SingleGainName) ) {
+					MaxGain = GainMap.get(SingleGainName);
+					MaxGainName = SingleGainName;
+				}
+			}
+		}
+		return MaxGainName;
+	}
+	/*
 	//墒值
 	//Entropy_S = -(p+)*log(p+)-(p-)*log(p-)
 	//p+、p-分别为正例和负例占总记录的比例，输出属性值大于2的情况，公示是对称的
@@ -99,5 +177,5 @@ public class InformationGain {
 		
 		double GainRatio  = AttrGain/AttrSplit;
 		return GainRatio;
-	}
+	}*/
 }

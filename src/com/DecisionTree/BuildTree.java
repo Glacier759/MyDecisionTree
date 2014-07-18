@@ -4,9 +4,7 @@ package com.DecisionTree;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.DecisionTree.TextProcessing.AttributeClass;
-import com.DecisionTree.TextProcessing.SituationClass;
-
+/*
 public class BuildTree {
 	
 	class TreeNode{
@@ -101,40 +99,6 @@ public class BuildTree {
 		return node;
 	}
 	
-	/*public TreeNode getNode( ) {
-		if ( AttrGainRatioMap.size() <= 0 ) {	return null;	}
-		TreeNode node = new TreeNode(getMaxGainAttr(AttrGainRatioMap));
-		node.isLeafNode = false;
-		AttributeClass objAttr = null;
-		for ( AttributeClass tempAttr:ResultList ) {
-			if ( tempAttr.AttributeName == node.AttributeName ) {
-				objAttr = tempAttr;
-				break;
-			}
-		}
-		for ( String SituName:objAttr.SituationMap.keySet() ) {
-			SituationClass objSitu = objAttr.SituationMap.get(SituName);
-			if ( objSitu.SituationType.size() == 1 ) {
-				for ( String result:objSitu.SituationType.keySet() ) {
-					TreeNode leaf = new TreeNode(result);
-					leaf.isLeafNode = true;
-					leaf.SituationMap = null;
-					leaf.ChildNodes = null;
-					node.SituationMap.put(SituName, true);
-					node.ChildNodes.put(SituName, leaf);
-				}
-			}
-			else {
-				node.SituationMap.put(SituName, false);
-				TreeNode nextNode = getNode();
-				if ( nextNode != null ) {
-					node.ChildNodes.put(SituName, nextNode);
-				}
-			}
-		}
-		return node;
-	}*/
-	
 	public String getMaxGainAttr( HashMap<String, Double> AttrGainRatioMap ) {
 		Double MaxGain = null;
 		String MaxGainAttrName = null;
@@ -155,3 +119,4 @@ public class BuildTree {
 	}
 	
 }
+*/
