@@ -15,9 +15,8 @@ public class Main {
 		
 		TextProcessing TextPro = new TextProcessing();
 		TextPro.readText(new File("test1.csv"));
-		//TextPro.show();
 		InformationGain infoGain = new InformationGain();
-		//System.out.println("\n\n\tMax Gain = " + infoGain.getMaxGain(TextPro)+"\n\n");
+		
 		String MaxGainName = infoGain.getMaxGain(TextPro);
 		for ( Attribute objAttr:TextPro.objAttributeList ) {
 			System.out.println("Attribute Name = " + objAttr.AttributeName);
