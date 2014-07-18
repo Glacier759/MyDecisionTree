@@ -27,7 +27,7 @@ public class TextProcessing {
 	public Result objResult = new Result();
 	public ArrayList<Attribute> objAttributeList = new ArrayList<Attribute>();
 	public String Headers[];
-	private List<String> textList = new ArrayList<String>();
+	public List<String> textList = new ArrayList<String>();
 	
 	public void readText( File file ) throws Exception {
 		List<String> textList = FileUtils.readLines(file);
