@@ -27,6 +27,7 @@ public class TextProcessing {
 	public Result objResult = new Result();
 	public ArrayList<Attribute> objAttributeList = new ArrayList<Attribute>();
 	public String Headers[];
+	private List<String> textList = new ArrayList<String>();
 	
 	public void readText( File file ) throws Exception {
 		List<String> textList = FileUtils.readLines(file);
@@ -37,6 +38,9 @@ public class TextProcessing {
 	}
 	
 	public void textProcess( List<String> textList ) {
+		for ( String textLine:textList ) {
+			this.textList.add(textLine);
+		}
 		Headers = textList.remove(0).split(",");
 		for ( int i = 0; i < Headers.length-1; i ++ ) {
 			Attribute objAttr = new Attribute();
@@ -83,8 +87,36 @@ public class TextProcessing {
 		}
 	}
 	
-	public void getChildTable( String AttributeName, String SituationName ) {
+	public List<String> getChildTable( String AttributeName, String SituationName ) {
 		
+		List<String> newTextList = new ArrayList<String>();
+		String Headers[] = this.textList.get(0).split(",");
+		int AttrIndex = 0;
+		newTextList.add(deleteIndex(AttrIndex, Headers));
+		for ( int i = 0; i < Headers.length; i ++ ) {
+			if ( AttributeName.equals(Headers[i]) ) {
+				AttrIndex = i;
+			}
+		}
+		for ( int i = 1; i < this.textList.size(); i ++ ) {
+			String textLine = this.textList.get(i);
+			String textArray[] = textLine.split(",");
+			if ( textArray[AttrIndex].equals(SituationName) ) {
+				newTextList.add(deleteIndex(AttrIndex, textArray));
+			}
+		}
+		return newTextList;
+	}
+	public String deleteIndex( int delIndex, String delArray[] ) {
+		String str = "";
+		for ( int i = 0; i < delArray.length; i ++ ) {
+			if ( i == delIndex ) {
+				continue;
+			}
+			str += ","+delArray[i];
+		}
+		str = str.substring(1);
+		return str;
 	}
 	
 	public void show() {
