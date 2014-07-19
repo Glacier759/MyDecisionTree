@@ -11,7 +11,7 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		
 		TextProcessing TextPro = new TextProcessing();
-		TextPro.readText(new File("test1.csv"));
+		TextPro.readText(new File("test.csv"));
 		
 		BuildTree DecisionTree = new BuildTree();
 		TreeNode root = DecisionTree.creat(TextPro, null, null);

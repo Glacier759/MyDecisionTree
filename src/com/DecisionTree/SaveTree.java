@@ -1,12 +1,14 @@
 
 package com.DecisionTree;
 
-import java.io.File;
+import java.io.FileWriter;
+import java.io.Writer;
 
-import org.apache.commons.io.FileUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
 
 import com.DecisionTree.BuildTree.TreeNode;
 
@@ -21,7 +23,13 @@ public class SaveTree {
 		Element nextNode = root.addElement("Decision");
 		toXML( treeRoot, nextNode );
 		System.out.println(xmlDoc.asXML());
-		FileUtils.writeStringToFile(new File("output.xml"), xmlDoc.asXML());
+		OutputFormat format = OutputFormat.createPrettyPrint();
+		Writer fileWriter = new FileWriter("output.xml");
+		XMLWriter output = new XMLWriter( fileWriter, format );
+		output.write(xmlDoc);
+		output.close();
+		
+		//FileUtils.writeStringToFile(new File("output.xml"), xmlDoc.asXML());
 	}
 	
 	public void toXML( TreeNode treeRoot, Element node ) {
@@ -38,19 +46,5 @@ public class SaveTree {
 			}
 			toXML( childNode, nextNode );
 		}		
-	}
-	public void show( TreeNode root ) {
-		System.out.println("Attribute = " + root.AttributeName);
-		System.out.println("Situation = " + root.SituationName);
-		System.out.println("Parent = " + root.ParentName);
-		System.out.println("is Leaf = " + root.isLeafNode);
-		System.out.println( "ChildCount = " + root.ChildCount);
-		if ( root.ChildNodes == null  ) {
-			return ;
-		}
-		for ( String SituName:root.ChildNodes.keySet() ) {
-			System.out.println("------------------------------------");
-			show( root.ChildNodes.get(SituName) );
-		}
 	}
 }

@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+  <Decision>
+    <middle-middle value="b">
+      <top-right value="b">
+        <bottom-left value="x">positive</bottom-left>
+        <bottom-left value="o">negative</bottom-left>
+      </top-right>
+      <top-right value="x">
+        <bottom-left value="b">positive</bottom-left>
+        <bottom-left value="x">positive</bottom-left>
+        <bottom-left value="o">
+          <bottom-right value="b">
+            <top-left value="x">positive</top-left>
+            <top-left value="o">negative</top-left>
+          </bottom-right>
+          <bottom-right value="x">
+            <middle-right value="b">
+              <top-left value="x">positive</top-left>
+              <top-left value="o">negative</top-left>
+            </middle-right>
+            <middle-right value="x">positive</middle-right>
+            <middle-right value="o">
+              <top-left value="x">positive</top-left>
+              <top-left value="o">negative</top-left>
+            </middle-right>
+          </bottom-right>
+          <bottom-right value="o">
+            <bottom-middle value="b">positive</bottom-middle>
+            <bottom-middle value="x">
+              <top-left value="x">positive</top-left>
+              <top-left value="o">negative</top-left>
+            </bottom-middle>
+            <bottom-middle value="o">negative</bottom-middle>
+          </bottom-right>
+        </bottom-left>
+      </top-right>
+      <top-right value="o">
+        <bottom-left value="b">negative</bottom-left>
+        <bottom-left value="x">
+          <bottom-right value="b">
+            <top-left value="x">positive</top-left>
+            <top-left value="o">negative</top-left>
+          </bottom-right>
+          <bottom-right value="x">
+            <bottom-middle value="b">
+              <top-left value="x">positive</top-left>
+              <top-left value="o">negative</top-left>
+            </bottom-middle>
+            <bottom-middle value="x">positive</bottom-middle>
+            <bottom-middle value="o">
+              <top-left value="x">positive</top-left>
+              <top-left value="o">negative</top-left>
+            </bottom-middle>
+          </bottom-right>
+          <bottom-right value="o">
+            <middle-right value="b">positive</middle-right>
+            <middle-right value="x">
+              <top-left value="x">positive</top-left>
+              <top-left value="o">negative</top-left>
+            </middle-right>
+            <middle-right value="o">negative</middle-right>
+          </bottom-right>
+        </bottom-left>
+        <bottom-left value="o">negative</bottom-left>
+      </top-right>
+    </middle-middle>
+    <middle-middle value="x">
+      <top-right value="b">
+        <bottom-left value="b">positive</bottom-left>
+        <bottom-left value="x">positive</bottom-left>
+        <bottom-left value="o">
+          <bottom-middle value="b">
+            <top-left value="b">positive</top-left>
+            <top-left value="x">positive</top-left>
+            <top-left value="o">
+              <middle-left value="x">positive</middle-left>
+              <middle-left value="o">negative</middle-left>
+            </top-left>
+          </bottom-middle>
+          <bottom-middle value="x">
+            <top-middle value="b">
+              <top-left value="x">positive</top-left>
+              <top-left value="o">
+                <middle-left value="x">positive</middle-left>
+                <middle-left value="o">negative</middle-left>
+              </top-left>
+            </top-middle>
+            <top-middle value="x">positive</top-middle>
+            <top-middle value="o">
+              <top-left value="b">positive</top-left>
+              <top-left value="x">positive</top-left>
+              <top-left value="o">
+                <bottom-right value="b">positive</bottom-right>
+                <bottom-right value="x">negative</bottom-right>
+              </top-left>
+            </top-middle>
+          </bottom-middle>
+          <bottom-middle value="o">
+            <bottom-right value="b">positive</bottom-right>
+            <bottom-right value="x">
+              <top-left value="b">positive</top-left>
+              <top-left value="x">positive</top-left>
+              <top-left value="o">
+                <middle-right value="x">
+                  <middle-left value="x">positive</middle-left>
+                  <middle-left value="o">negative</middle-left>
+                </middle-right>
+              </top-left>
+            </bottom-right>
+            <bottom-right value="o">negative</bottom-right>
+          </bottom-middle>
+        </bottom-left>
+      </top-right>
+      <top-right value="x">
+        <bottom-left value="b">positive</bottom-left>
+        <bottom-left value="x">positive</bottom-left>
+        <bottom-left value="o">
+          <bottom-right value="b">
+            <top-left value="b">positive</top-left>
+            <top-left value="x">positive</top-left>
+            <top-left value="o">
+              <middle-left value="b">positive</middle-left>
+              <middle-left value="x">positive</middle-left>
+              <middle-left value="o">negative</middle-left>
+            </top-left>
+          </bottom-right>
+          <bottom-right value="x">
+            <top-left value="b">positive</top-left>
+            <top-left value="x">positive</top-left>
+            <top-left value="o">
+              <middle-right value="b">negative</middle-right>
+              <middle-right value="x">positive</middle-right>
+              <middle-right value="o">negative</middle-right>
+            </top-left>
+          </bottom-right>
+          <bottom-right value="o">
+            <bottom-middle value="b">
+              <top-left value="b">positive</top-left>
+              <top-left value="x">positive</top-left>
+              <top-left value="o">
+                <middle-right value="x">
+                  <middle-left value="x">positive</middle-left>
+                  <middle-left value="o">negative</middle-left>
+                </middle-right>
+              </top-left>
+            </bottom-middle>
+            <bottom-middle value="x">
+              <top-middle value="b">negative</top-middle>
+              <top-middle value="x">positive</top-middle>
+              <top-middle value="o">
+                <top-left value="x">negative</top-left>
+                <top-left value="o">positive</top-left>
+              </top-middle>
+            </bottom-middle>
+            <bottom-middle value="o">negative</bottom-middle>
+          </bottom-right>
+        </bottom-left>
+      </top-right>
+      <top-right value="o">
+        <bottom-left value="b">
+          <middle-right value="b">
+            <top-left value="b">positive</top-left>
+            <top-left value="x">positive</top-left>
+            <top-left value="o">
+              <top-middle value="x">positive</top-middle>
+              <top-middle value="o">negative</top-middle>
+            </top-left>
+          </middle-right>
+          <middle-right value="x">
+            <middle-left value="b">
+              <top-left value="x">positive</top-left>
+              <top-left value="o">
+                <top-middle value="x">positive</top-middle>
+                <top-middle value="o">negative</top-middle>
+              </top-left>
+            </middle-left>
+            <middle-left value="x">positive</middle-left>
+            <middle-left value="o">
+              <top-left value="b">positive</top-left>
+              <top-left value="x">positive</top-left>
+              <top-left value="o">
+                <bottom-middle value="x">
+                  <bottom-right value="b">positive</bottom-right>
+                  <bottom-right value="x">negative</bottom-right>
+                </bottom-middle>
+              </top-left>
+            </middle-left>
+          </middle-right>
+          <middle-right value="o">
+            <bottom-right value="b">positive</bottom-right>
+            <bottom-right value="x">
+              <top-left value="b">positive</top-left>
+              <top-left value="x">positive</top-left>
+              <top-left value="o">
+                <bottom-middle value="x">
+                  <middle-left value="b">positive</middle-left>
+                  <middle-left value="x">negative</middle-left>
+                </bottom-middle>
+              </top-left>
+            </bottom-right>
+            <bottom-right value="o">negative</bottom-right>
+          </middle-right>
+        </bottom-left>
+        <bottom-left value="x">
+          <bottom-right value="b">
+            <top-left value="b">positive</top-left>
+            <top-left value="x">positive</top-left>
+            <top-left value="o">
+              <top-middle value="b">positive</top-middle>
+              <top-middle value="x">positive</top-middle>
+              <top-middle value="o">negative</top-middle>
+            </top-left>
+          </bottom-right>
+          <bottom-right value="x">
+            <top-left value="b">positive</top-left>
+            <top-left value="x">positive</top-left>
+            <top-left value="o">
+              <bottom-middle value="b">negative</bottom-middle>
+              <bottom-middle value="x">positive</bottom-middle>
+              <bottom-middle value="o">negative</bottom-middle>
+            </top-left>
+          </bottom-right>
+          <bottom-right value="o">
+            <middle-right value="b">
+              <top-left value="b">positive</top-left>
+              <top-left value="x">positive</top-left>
+              <top-left value="o">
+                <bottom-middle value="x">
+                  <middle-left value="b">positive</middle-left>
+                  <middle-left value="x">negative</middle-left>
+                </bottom-middle>
+              </top-left>
+            </middle-right>
+            <middle-right value="x">
+              <middle-left value="b">negative</middle-left>
+              <middle-left value="x">positive</middle-left>
+              <middle-left value="o">
+                <top-left value="x">negative</top-left>
+                <top-left value="o">positive</top-left>
+              </middle-left>
+            </middle-right>
+            <middle-right value="o">negative</middle-right>
+          </bottom-right>
+        </bottom-left>
+        <bottom-left value="o">
+          <bottom-right value="b">positive</bottom-right>
+          <bottom-right value="x">
+            <top-left value="b">positive</top-left>
+            <top-left value="x">positive</top-left>
+            <top-left value="o">
+              <middle-left value="b">
+                <bottom-middle value="x">
+                  <middle-right value="b">positive</middle-right>
+                  <middle-right value="x">negative</middle-right>
+                </bottom-middle>
+              </middle-left>
+              <middle-left value="x">
+                <middle-right value="b">negative</middle-right>
+                <middle-right value="x">positive</middle-right>
+                <middle-right value="o">positive</middle-right>
+              </middle-left>
+              <middle-left value="o">negative</middle-left>
+            </top-left>
+          </bottom-right>
+          <bottom-right value="o">
+            <bottom-middle value="b">
+              <middle-right value="x">positive</middle-right>
+              <middle-right value="o">negative</middle-right>
+            </bottom-middle>
+            <bottom-middle value="x">
+              <middle-right value="b">positive</middle-right>
+              <middle-right value="x">positive</middle-right>
+              <middle-right value="o">negative</middle-right>
+            </bottom-middle>
+            <bottom-middle value="o">negative</bottom-middle>
+          </bottom-right>
+        </bottom-left>
+      </top-right>
+    </middle-middle>
+    <middle-middle value="o">
+      <top-right value="b">
+        <bottom-left value="b">negative</bottom-left>
+        <bottom-left value="x">
+          <middle-right value="b">
+            <middle-left value="b">
+              <bottom-middle value="x">
+                <bottom-right value="x">positive</bottom-right>
+                <bottom-right value="o">negative</bottom-right>
+              </bottom-middle>
+              <bottom-middle value="o">negative</bottom-middle>
+            </middle-left>
+            <middle-left value="x">
+              <top-left value="b">negative</top-left>
+              <top-left value="x">positive</top-left>
+              <top-left value="o">
+                <bottom-right value="x">positive</bottom-right>
+                <bottom-right value="o">negative</bottom-right>
+              </top-left>
+            </middle-left>
+            <middle-left value="o">positive</middle-left>
+          </middle-right>
+          <middle-right value="x">
+            <top-middle value="b">
+              <bottom-right value="x">positive</bottom-right>
+              <bottom-right value="o">
+                <top-left value="x">positive</top-left>
+                <top-left value="o">negative</top-left>
+              </bottom-right>
+            </top-middle>
+            <top-middle value="x">negative</top-middle>
+            <top-middle value="o">
+              <bottom-middle value="b">positive</bottom-middle>
+              <bottom-middle value="x">
+                <bottom-right value="x">positive</bottom-right>
+                <bottom-right value="o">negative</bottom-right>
+              </bottom-middle>
+              <bottom-middle value="o">negative</bottom-middle>
+            </top-middle>
+          </middle-right>
+          <middle-right value="o">
+            <middle-left value="b">positive</middle-left>
+            <middle-left value="x">
+              <top-left value="b">positive</top-left>
+              <top-left value="x">positive</top-left>
+              <top-left value="o">
+                <bottom-middle value="x">
+                  <bottom-right value="x">positive</bottom-right>
+                  <bottom-right value="o">negative</bottom-right>
+                </bottom-middle>
+              </top-left>
+            </middle-left>
+            <middle-left value="o">negative</middle-left>
+          </middle-right>
+        </bottom-left>
+        <bottom-left value="o">negative</bottom-left>
+      </top-right>
+      <top-right value="x">
+        <bottom-right value="b">
+          <top-left value="b">negative</top-left>
+          <top-left value="x">
+            <top-middle value="b">
+              <middle-left value="x">positive</middle-left>
+              <middle-left value="o">negative</middle-left>
+            </top-middle>
+            <top-middle value="x">positive</top-middle>
+            <top-middle value="o">
+              <bottom-middle value="b">positive</bottom-middle>
+              <bottom-middle value="x">negative</bottom-middle>
+              <bottom-middle value="o">negative</bottom-middle>
+            </top-middle>
+          </top-left>
+          <top-left value="o">negative</top-left>
+        </bottom-right>
+        <bottom-right value="x">
+          <middle-right value="b">
+            <bottom-middle value="b">positive</bottom-middle>
+            <bottom-middle value="x">
+              <bottom-left value="x">positive</bottom-left>
+              <bottom-left value="o">negative</bottom-left>
+            </bottom-middle>
+            <bottom-middle value="o">
+              <top-middle value="x">positive</top-middle>
+              <top-middle value="o">negative</top-middle>
+            </bottom-middle>
+          </middle-right>
+          <middle-right value="x">positive</middle-right>
+          <middle-right value="o">
+            <middle-left value="b">
+              <bottom-middle value="b">positive</bottom-middle>
+              <bottom-middle value="x">positive</bottom-middle>
+              <bottom-middle value="o">
+                <bottom-left value="b">positive</bottom-left>
+                <bottom-left value="x">negative</bottom-left>
+              </bottom-middle>
+            </middle-left>
+            <middle-left value="x">
+              <bottom-left value="b">negative</bottom-left>
+              <bottom-left value="x">
+                <bottom-middle value="x">positive</bottom-middle>
+                <bottom-middle value="o">negative</bottom-middle>
+              </bottom-left>
+              <bottom-left value="o">
+                <bottom-middle value="x">negative</bottom-middle>
+                <bottom-middle value="o">positive</bottom-middle>
+              </bottom-left>
+            </middle-left>
+            <middle-left value="o">negative</middle-left>
+          </middle-right>
+        </bottom-right>
+        <bottom-right value="o">
+          <top-left value="b">negative</top-left>
+          <top-left value="x">
+            <top-middle value="b">
+              <bottom-left value="x">
+                <middle-left value="x">positive</middle-left>
+                <middle-left value="o">negative</middle-left>
+              </bottom-left>
+              <bottom-left value="o">negative</bottom-left>
+            </top-middle>
+            <top-middle value="x">positive</top-middle>
+            <top-middle value="o">
+              <middle-right value="b">positive</middle-right>
+              <middle-right value="x">negative</middle-right>
+              <middle-right value="o">positive</middle-right>
+            </top-middle>
+          </top-left>
+          <top-left value="o">negative</top-left>
+        </bottom-right>
+      </top-right>
+      <top-right value="o">
+        <bottom-left value="b">negative</bottom-left>
+        <bottom-left value="x">
+          <middle-right value="b">
+            <bottom-right value="b">positive</bottom-right>
+            <bottom-right value="x">positive</bottom-right>
+            <bottom-right value="o">
+              <top-left value="x">positive</top-left>
+              <top-left value="o">negative</top-left>
+            </bottom-right>
+          </middle-right>
+          <middle-right value="x">
+            <top-left value="b">
+              <bottom-middle value="x">positive</bottom-middle>
+              <bottom-middle value="o">negative</bottom-middle>
+            </top-left>
+            <top-left value="x">
+              <middle-left value="b">negative</middle-left>
+              <middle-left value="x">positive</middle-left>
+              <middle-left value="o">
+                <top-middle value="x">negative</top-middle>
+                <top-middle value="o">positive</top-middle>
+              </middle-left>
+            </top-left>
+            <top-left value="o">
+              <middle-left value="b">
+                <bottom-middle value="x">
+                  <bottom-right value="x">positive</bottom-right>
+                  <bottom-right value="o">negative</bottom-right>
+                </bottom-middle>
+              </middle-left>
+              <middle-left value="x">negative</middle-left>
+              <middle-left value="o">positive</middle-left>
+            </top-left>
+          </middle-right>
+          <middle-right value="o">
+            <bottom-right value="b">
+              <middle-left value="x">positive</middle-left>
+              <middle-left value="o">negative</middle-left>
+            </bottom-right>
+            <bottom-right value="x">
+              <middle-left value="b">positive</middle-left>
+              <middle-left value="x">positive</middle-left>
+              <middle-left value="o">negative</middle-left>
+            </bottom-right>
+            <bottom-right value="o">negative</bottom-right>
+          </middle-right>
+        </bottom-left>
+        <bottom-left value="o">negative</bottom-left>
+      </top-right>
+    </middle-middle>
+  </Decision>
+</root>
