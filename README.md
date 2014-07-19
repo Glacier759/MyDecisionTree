@@ -23,7 +23,7 @@ MyDecisionTree
 
 >标签名为一个节点的属性名(Attribute)
 
->当属性选择结果为value对应的值时
+>当属性选择记录(Situation)为value对应的值时
 
 >则进入该标签的嵌套标签递归查询
 
