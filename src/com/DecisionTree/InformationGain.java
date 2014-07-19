@@ -69,27 +69,20 @@ public class InformationGain {
 	}
 	
 	public String getMaxGain( TextProcessing TextPro ) {
-		System.out.println(getInformationEntroy(TextPro.objResult.Result_Count));
 		double Entropy_S = getInformationEntroy(TextPro.objResult.Result_Count);
 		HashMap<String, Double> GainMap = new HashMap<String, Double>();
 		for ( int i = 0; i < TextPro.objAttributeList.size(); i ++ ) {
 			Attribute objAttr = TextPro.objAttributeList.get(i);
-			System.out.println(objAttr.AttributeName);
 			ArrayList<Integer> CalcuParamInt = new ArrayList<Integer>();
 			ArrayList<Double> CalcuParamDou = new ArrayList<Double>();
 			for ( String SituName:objAttr.Situation_Count.keySet() ) {
 				CalcuParamInt.add(objAttr.Situation_Count.get(SituName));
 				CalcuParamDou.add(getInformationEntroy(objAttr.SituationMap.get(SituName).Result_Count));
-				System.out.println("\t"+SituName+"\t"+objAttr.Situation_Count.get(SituName));
-				System.out.println("\t\t"+getInformationEntroy(objAttr.SituationMap.get(SituName).Result_Count));
 			}
 			double Gain = getInformationGain(Entropy_S, CalcuParamInt, CalcuParamDou);
 			double Split = getInformationSplit(CalcuParamInt);
 			double GainRatio = getInformationGainRatio(Gain, Split);
 			GainMap.put(objAttr.AttributeName, GainRatio);
-			System.out.println("\t\tGain = " + Gain);
-			System.out.println("\t\tSplit = " + Split);
-			System.out.println("\t\tGainRatio = " + GainRatio);
 		}
 		Double MaxGain = null;
 		String MaxGainName = null;

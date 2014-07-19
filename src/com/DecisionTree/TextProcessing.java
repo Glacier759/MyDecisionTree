@@ -92,12 +92,12 @@ public class TextProcessing {
 		List<String> newTextList = new ArrayList<String>();
 		String Headers[] = this.textList.get(0).split(",");
 		int AttrIndex = 0;
-		newTextList.add(deleteIndex(AttrIndex, Headers));
 		for ( int i = 0; i < Headers.length; i ++ ) {
 			if ( AttributeName.equals(Headers[i]) ) {
 				AttrIndex = i;
 			}
 		}
+		newTextList.add(deleteIndex(AttrIndex, Headers));
 		for ( int i = 1; i < this.textList.size(); i ++ ) {
 			String textLine = this.textList.get(i);
 			String textArray[] = textLine.split(",");
