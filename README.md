@@ -3,7 +3,7 @@ MyDecisionTree
 
 决策树的实现
 
-#Input
+##Input
 
 >输入文件为.csv文件
 
@@ -13,7 +13,7 @@ MyDecisionTree
 
 >之间以逗号作为分隔符
 
-#Output
+##Output
 
 >输出文件为output.xml
 
