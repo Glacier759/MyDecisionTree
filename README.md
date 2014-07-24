@@ -28,3 +28,5 @@ MyDecisionTree
 >则进入该标签的嵌套标签递归查询
 
 >当递归找到结果时  标签所包含的Text即为最终的决策结果
+
+##博客详解: http://glacierlx.sinaapp.com/?p=142
